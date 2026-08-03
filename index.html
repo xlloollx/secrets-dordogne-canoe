@@ -77,7 +77,7 @@
   .navtoggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
   @media(max-width:820px){
-    .nav{backdrop-filter:none; background:var(--cream);}
+    .nav{backdrop-filter:none; background:var(--cream); z-index:70;}
     .navtoggle{display:flex;}
     .navlinks-desktopcta{display:none !important;}
     .navlinks{
@@ -92,10 +92,11 @@
     .navlinks a{padding:15px 0; width:100%; border-bottom:1px solid var(--line); font-size:1rem;}
     .navlinks-cta{display:inline-block !important; margin-top:20px; border-bottom:none !important; text-align:center; color:var(--cream) !important; width:100%;}
     .nav-backdrop{
-      position:fixed; inset:0; background:rgba(20,30,25,0.45); z-index:55;
+      position:fixed; inset:0; background:rgba(20,30,25,0.45); z-index:60;
       opacity:0; visibility:hidden; transition:opacity .35s ease, visibility .35s ease;
     }
     .nav-backdrop.open{opacity:1; visibility:visible;}
+    #waterFx{display:none !important;}
   }
   .btn{
     display:inline-block;
