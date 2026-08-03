@@ -25,6 +25,7 @@
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
+  section[id], header[id]{scroll-margin-top:80px;}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
@@ -626,7 +627,7 @@
       <a href="https://airbnb.fr/x/canoedordogne" target="_blank" rel="noopener" class="btn ghost">Voir sur Airbnb</a>
     </div>
     <div class="alt-platforms">
-      Également disponible sur <a href="https://airbnb.fr/x/canoedordogne" target="_blank" rel="noopener">Airbnb</a> et GetYourGuide.
+      Également disponible sur <a href="https://airbnb.fr/x/canoedordogne" target="_blank" rel="noopener">Airbnb</a> et <a href="https://www.getyourguide.com/fr-fr/la-roque-gageac-l139356/decouvrez-les-secrets-de-la-dordogne-en-canoe-t1348113/" target="_blank" rel="noopener">GetYourGuide</a>.
     </div>
   </div>
 </section>
@@ -649,7 +650,15 @@
     function closeMenu(){ links.classList.remove('open'); backdrop.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); }
     toggle.addEventListener('click', ()=>{ links.classList.contains('open') ? closeMenu() : openMenu(); });
     backdrop.addEventListener('click', closeMenu);
-    links.querySelectorAll('a').forEach(a=> a.addEventListener('click', closeMenu));
+    links.querySelectorAll('a').forEach(a=> a.addEventListener('click', (ev)=>{
+      const href = a.getAttribute('href');
+      closeMenu();
+      if(href && href.startsWith('#') && href.length>1){
+        ev.preventDefault();
+        const target = document.querySelector(href);
+        if(target){ setTimeout(()=>{ target.scrollIntoView({behavior:'smooth', block:'start'}); }, 320); }
+      }
+    }));
   })();
 
   // Scroll reveal
