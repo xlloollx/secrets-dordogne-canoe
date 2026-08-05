@@ -96,7 +96,6 @@
       opacity:0; visibility:hidden; transition:opacity .35s ease, visibility .35s ease;
     }
     .nav-backdrop.open{opacity:1; visibility:visible;}
-    #waterFx{display:none !important;}
   }
   .btn{
     display:inline-block;
@@ -346,7 +345,7 @@
   .reveal.in{opacity:1; transform:translateY(0);}
 
   #waterFx{
-    position:fixed; inset:0; width:100vw; height:100vh; z-index:9999;
+    position:fixed; inset:0; width:100vw; height:100vh; z-index:40;
     pointer-events:none; mix-blend-mode:multiply; opacity:0.85;
   }
   @media (prefers-reduced-motion: reduce){ #waterFx{display:none;} }
